@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+    background-color: gray;
+    margin: 0%;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: 900;
+    color:chocolate;
+}
+#table{
+    display: flex;
+    justify-content: center;
+}
+#img2{
+    display: flex;
+    justify-content: center;
+    margin-left: 45%;
+    height: 100px;
+    width: 100px;
+    
+}
+#one{
+    background-color:black;
+}
+#search1{
+    height: 10vh;
+    width: 30vw;
+    border-radius: 20px;
+    margin: 2%;
+    font-size: x-large;
+    font-weight: bold;
+    border-color:bisque;
+   
+}
+#search{
+    
+display: flex;
+    flex-direction: center;
+    justify-content: center;
+}
+</style>
+<body onload="load()">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+    
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+   
+    <main>
+   
+    <section id="one">
+        <h1>welcome admin</h1>
+        
+    </section>
+    <div id="search">
+        <input type="text" id="search1" onkeyup="search()" placeholder="search here">
+    </div>
+    <section id="table">
+      
+    <div class="table-responsive">
+        <table border="3" class="table table-dark" id="mytable">
+            <thead>
+                <th>first name</th>
+                <th>last name</th>
+                <th>email</th>
+                <th>phone number</th>
+                <th>gender</th>
+                <th>password</th>
+                <th>image</th>
+                <th>option</th>
+            </thead>
+            <tbody id="tbdy">
+                
+            </tbody>
+           
+        </table>
+    </div>
+  
+    </section>
+    <img src="" alt="" id="img2" height="50px" width="50px">
+   </main>    
+   <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyBRLu-UZQuce1e2ZY5ui0zdgswsnI8CRM4",
+    authDomain: "theta-ocean-236311.firebaseapp.com",
+    databaseURL: "https://theta-ocean-236311-default-rtdb.firebaseio.com",
+    projectId: "theta-ocean-236311",
+    storageBucket: "theta-ocean-236311.appspot.com",
+    messagingSenderId: "1045228638270",
+    appId: "1:1045228638270:web:dff1234cb0bc8d2a45416f",
+    measurementId: "G-W0KJCY8GC6"
+  };
+firebase.initializeApp(firebaseConfig);
+    function load(){
+        document.getElementById("tbdy").innerHTML="" 
+    document.getElementById("img2").src="load.jpg"
+        firebase.database().ref("record").once("value",ALLRECORD=>{
+            document.getElementById("img2").style.display="none"
+            ALLRECORD.forEach(element => {
+              
+                //console.log(element.val().FIRSTNAME,element.val().LASTNAME,element.val().EMAIL,element.val().PHONENUMBER,element.val().GENDER,element.val().PASSWORD,element.val().IMAGE)
+                create(element.val().FIRSTNAME,element.val().LASTNAME,element.val().EMAIL,element.val().PHONENUMBER,element.val().GENDER,element.val().PASSWORD,element.val().IMAGE)
+            });
+        })
+    }
+function create(firstname,lastname,email,phonenumber,gender,password,image){
+    row=document.createElement('tr')
+    delet=document.createElement("button")
+    delet.innerHTML="delete"
+    delet.style.margin="2%"
+    delet.setAttribute("onclick","del(this)")
+    delet.setAttribute("class","btn btn-danger")
+    cell1=document.createElement('td')
+    cell2=document.createElement('td')
+    cell3=document.createElement('td')
+    cell4=document.createElement('td')
+    cell5=document.createElement('td')
+    cell6=document.createElement('td')
+    cell7=document.createElement('td')
+    cell8=document.createElement('td')
+    img=document.createElement('img')
+    img.src=image
+    img.style.height='50px'
+    img.style.width='50px'
+    img.style.borderRadius='5px'
+    // 
+    row.append(cell1)
+    row.append(cell2)
+    row.append(cell3)
+    row.append(cell4)
+    row.append(cell5)
+    row.append(cell6)
+    row.append(cell7)
+    row.append(cell8)
+    
+    cell8.append(delet)
+    cell7.append(img)
+    //
+    cell1.innerHTML=firstname
+    cell2.innerHTML=lastname
+    cell3.innerHTML=email
+    cell4.innerHTML=phonenumber
+    cell5.innerHTML=gender
+    cell6.innerHTML=password
+    
+    //
+   
+    //
+    document.getElementById('tbdy').append(row)
+
+}
+function del(holder){
+            
+            row=holder.parentNode.parentNode
+            box=row.childNodes[0].innerHTML
+            firebase.database().ref('/record/' + box).remove();
+            row.style.display="none"
+            load()
+}
+
+function search(){
+    input=document.getElementById("search1").value.toUpperCase()
+    table=document.getElementById("mytable")
+    tr=table.getElementsByTagName('tr')
+
+    for (let i = 0; i < tr.length; i++) {
+        td=tr[i].getElementsByTagName('td')[0]
+        if(td){
+            if(td.innerHTML.toUpperCase().indexOf(input)>-1){
+                tr[i].style.display=""
+
+            }else{
+                tr[i].style.display="none"
+
+            }
+        }
+       
+       }
+        // if (td) {
+        //     textvalue=td.textContent||td.innerHTML;
+        //     if(textvalue.toUpperCase().indexOf(input)>-1){
+        //         tr[i].style.display=""
+        //     }else{
+        //         tr[i].style.display="none"
+        //     }
+            
+        }
+    
+        
+    // }
+
+    //  firebase.database().ref("record").once("value",ALLRECORD=>{
+        
+    //     ALLRECORD.forEach(element=>{
+    //         console.log(element.val().EMAIL)
+    //         const result=element.val().FIRSTNAME
+           
+    //     })
+    //  })
+
+     
+       
+    
+        
+   
+
+   </script>
+</body>
+</html>

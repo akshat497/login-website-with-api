@@ -1,0 +1,167 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+:root{
+    --dark:#b9a1d0;
+    --background:#ffe9db;
+}
+html{
+    font-size: 62.5%;
+    font-family:"Montserrat",sans-serif;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+    margin: auto;
+    background-color: rgb(170, 170, 170);
+    background-image: url(./4.png) ;
+    background-size: cover;
+    
+}
+main{
+    width: 50vw;
+    text-align: center;
+    background-color: rgb(74, 70, 70);
+    border: solid black;
+    border-width: .8rem;
+    border-radius: 1rem;
+    color: #3d648b;
+    background-image: url(./3.jpg);
+    background-size: cover;
+}
+#fchild{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+}
+
+button{
+    min-width: 28rem;
+    background-image: linear-gradient(92.88deg,#455eb5 9.16%,#5643cc 43.89%,#673fd7 65.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px 3px;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all 0.5s;
+    user-select: none;
+    -webkit-user-select: none;
+    text-transform: capitalize;
+    font-family: "josefin sans",sans-serif;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+#button{
+    min-width: 28rem;
+    background-image: linear-gradient(92.88deg,#455eb5 9.16%,#5643cc 43.89%,#673fd7 65.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px 3px;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all 0.5s;
+    user-select: none;
+    -webkit-user-select: none;
+    text-transform: capitalize;
+    font-family: "josefin sans",sans-serif;
+    margin-top: 4%;
+    margin-bottom: 2%;
+
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15%;
+}
+input{
+    padding: 6%;
+    width: 100%;
+    margin: 5%;
+    border-radius: 9px;
+    border: #3d648b;
+    border-style: none;
+
+
+}
+#loginbtn{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin-left: 7%;
+    font-weight: bolder;
+    font-style: oblique;
+}
+#signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+}
+#signup input{
+    padding: 1%;
+    margin: 1%;
+    width: 70%;
+    justify-content: left;
+}
+#signup span{
+    display: flex;
+    flex-direction:row;
+}
+#signup button{
+    width:10%;
+    display: flex;
+    justify-content: center;
+    
+}
+#signup img{
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 3%;
+}
+#imgUploadButton{
+    background-color: #3d8b6d;
+    display: block;
+    justify-content: center;
+    font-weight: bolder;
+    color: #ffffff;
+    padding: 1%;
+    margin: 3%;
+    cursor: pointer;    
+}
+#imgUploadButton:hover{
+    background-color:#11b154;
+    color: aliceblue;
+
+}
+#gender{
+    display: none;
+}
+#adminsection input{
+        width: 300px;
+}
